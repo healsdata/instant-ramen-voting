@@ -17,12 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Healsdata\\InstantRamentVoting\\": "src/"     
+            "Healsdata\\InstantRamenVoting\\": "src/"     
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Healsdata\\InstantRamentVoting\\Test\\": "tests/"
+            "Healsdata\\InstantRamenVoting\\Tests\\": "tests/"
         }
     }
 }
