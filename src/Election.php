@@ -2,6 +2,8 @@
 
 namespace Healsdata\InstantRamenVoting;
 
+use Healsdata\InstantRamenVoting\Calculator\MajorityVoteCalculator;
+
 class Election
 {
     /** @var Candidate[] */
@@ -24,7 +26,7 @@ class Election
     {
         $eliminatedCandidates = [];
 
-        $majorityVotesNeeded = ceil(sizeof($this->ballots) / 2);
+        $majorityVotesNeeded = (new MajorityVoteCalculator())->calculate(sizeof($this->ballots));
 
         while (true) {
             $votes = [];
