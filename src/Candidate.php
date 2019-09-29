@@ -4,6 +4,8 @@ namespace Healsdata\InstantRamenVoting;
 
 class Candidate
 {
+    const EXHAUSTED = 'exhausted';
+
     /** @var string */
     private $name;
 

@@ -38,14 +38,11 @@ class Election
                     continue;
                 }
 
-                $candidates = $ballot->getRankedCandidates();
-                $candidates = array_values(array_diff($candidates, $eliminatedCandidates));
+                $vote = $ballot->getCurrentVote($eliminatedCandidates)->getName();
 
-                if (!sizeof($candidates)) {
+                if ($vote == Candidate::EXHAUSTED) {
                     continue;
                 }
-
-                $vote = $candidates[0]->getName();
 
                 if (!array_key_exists($vote, $votes)) {
                     $votes[$vote] = 0;
@@ -55,7 +52,7 @@ class Election
             }
 
             if (empty($votes)) {
-                return new Candidate('No Winner');
+                return new Candidate(Candidate::EXHAUSTED);
             
             }
 
