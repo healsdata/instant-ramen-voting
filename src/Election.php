@@ -3,6 +3,7 @@
 namespace Healsdata\InstantRamenVoting;
 
 use Healsdata\InstantRamenVoting\Calculator\MajorityVoteCalculator;
+use Healsdata\InstantRamenVoting\Ballot\IsBallotSpoiledSpecification;
 
 class Election
 {
@@ -32,6 +33,10 @@ class Election
             $votes = [];
 
             foreach ($this->ballots as $ballot) {
+
+                if ((new IsBallotSpoiledSpecification())->isSatisfiedBy($ballot)) {
+                    continue;
+                }
 
                 $candidates = $ballot->getRankedCandidates();
                 $candidates = array_values(array_diff($candidates, $eliminatedCandidates));
